@@ -2,7 +2,7 @@ __precompile__()
 module Clarabel
 
     using SparseArrays, LinearAlgebra, Printf
-    using CUDA, CUDA.CUBLAS, PythonCall # for GPU implementation
+    using CUDA, CUDA.CUBLAS
 
     const DefaultFloat = Float64
     const DefaultInt   = Int64
@@ -114,9 +114,6 @@ module Clarabel
          include("./MOI_wrapper/MOI_wrapper.jl")
     end
     const Optimizer{T} = Clarabel.MOIwrapper.Optimizer{T}
-
-    # Functions for use in python
-    include("python/py2jl.jl")
 
     #precompile minimal MOI / native examples
     using SnoopPrecompile

@@ -167,7 +167,7 @@ end
     #SVD of L2'*L1,
     tmp = workmat1;
     CUDA.CUBLAS.gemm_strided_batched!('T', 'N', one(T), L2, L1, zero(T), tmp)
-    U, S, V = CUDA.CUSOLVER.gesvdj!('V', tmp)
+    U, S, V = CUDA.CUSOLVER.gesvda!('V', tmp)
 
     #assemble λ (diagonal), R and Rinv.
     copyto!(λpsd, S)
